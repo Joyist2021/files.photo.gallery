@@ -5,53 +5,53 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-// config
+// 配置
 class config {
 
-  // DEFAULT CONFIG
-  // Only edit directly if it is a temporary installation. Settings added here will be lost when updating!
-  // Instead, add options from external config file in your storage_path [_files/config/config.php]
-  // READ MORE: https://forum.photo.gallery/viewtopic.php?f=66&t=9964
+  //默认配置
+  //如果是临时安装，则仅直接编辑。更新时，此处添加的设置将丢失！
+  // 相反，请在storage_path [_files/config/config.php]中从外部配置文件添加选项
+  // 阅读更多：https://forum.photo.gallery/viewtopic.php?f=66&t=9964
   public static $default = array(
 
-    // paths
-    'root' => '', // root path relative to script. 
-    'start_path' => false, // start path relative to script. If empty, root is start path
+    // 路径
+    'root' => '', // 相对于脚本的根root路径。
+    'start_path' => false, // 相对于脚本的开始路径。如果为空，则root为起始路径
 
     // login
     'username' => '',
-    'password' => '', // Add password directly or use https://tinyfilemanager.github.io/docs/pwd.html to encrypt the password (encrypted password is more secure, as it prevents your password from being exposed directly in a file).
+    'password' => '', // 直接添加密码或使用https://tinyfilemanager.github.io/docs/pwd.html加密密码（加密的密码更安全，因为它可以防止您的密码直接暴露在一个文件中）。
 
-    // images
+    // 图片
     'load_images' => true,
     'load_files_proxy_php' => false,
-    'load_images_max_filesize' => 1000000, // maximum file size (bytes) for un-resized images loaded into list
+    'load_images_max_filesize' => 1000000, // 加载到列表中的未调整大小的图像的最大文件大小（字节）
     'load_svg_max_filesize' => 100000, // 100k
     'image_resize_enabled' => true,
-    'image_resize_cache' => true, // todo: remove this option and just use 'cache?
+    'image_resize_cache' => true, // 待办事项：删除此选项，仅使用 'cache?
     'image_resize_dimensions' => 320,
     'image_resize_dimensions_retina' => 480,
     'image_resize_quality' => 85,
-    'image_resize_function' => 'imagecopyresampled', // imagecopyresampled / imagecopyresized
+    'image_resize_function' => 'imagecopyresampled', // imagecopyresampled 图像副本重新采样/ imagecopyresized 图像副本调整大小
     'image_resize_sharpen' => true,
-    'image_resize_memory_limit' => 128, // 128 MB is suffient to resize images around 6000 px / 0 = ignore memory
-    'image_resize_max_pixels' => 30000000, // 30 MP equivalent to an image 6000 x 5000 / 0 = no limit
-    'image_resize_min_ratio' => 1.5, // min size diff original vs resize. Only resizes if ratio > min ratio
-    'image_resize_cache_direct' => false, // if enabled and delete cache, must increase cache_key
+    'image_resize_memory_limit' => 128, // 128 MB足以调整6000像素左右的图像大小 / 0 = 忽略内存
+    'image_resize_max_pixels' => 30000000, // 30 MP等效于图像6000 x 5000 / 0 =无限制
+    'image_resize_min_ratio' => 1.5, // 最小尺寸diff原始尺寸与调整尺寸。仅当比率>最小比率时才调整大小
+    'image_resize_cache_direct' => false, // 如果启用并删除缓存，则必须增加cache_key
 
-    // menu
+    // 菜单
     'menu_enabled' => true,
     'menu_show' => true,
     'menu_max_depth' => 5,
     'menu_sort' => 'name_asc', // name_asc, name_desc, date_asc, date_desc
     'menu_cache_validate' => true,
     'menu_load_all' => false,
-    'menu_recursive_symlinks' => true, // List sub-directories of symlinks in the main menu. May cause menu loops and/or duplicate menu items
+    'menu_recursive_symlinks' => true, // 在主菜单中列出符号链接的子目录。可能导致菜单循环和/或重复的菜单项
 
-    // files layout
-    'layout' => 'rows', // list, blocks, grid, rows, columns
-    'image_cover' => true, // scales image inside container for list, block, grid and rows layouts.
-    'sort' => 'name_asc', // name, date, filesize, kind
+    // 文件布局
+    'layout' => 'rows', // list, blocks, grid, rows, columns /列表，块，网格，行，列
+    'image_cover' => true, // 缩放容器内的图像以用于列表，块，网格和行布局。
+    'sort' => 'name_asc', // name, date, filesize, kind /名称，日期，文件大小，种类
     'sort_dirs_first' => true,
 
     // cache
@@ -59,32 +59,32 @@ class config {
     'cache_key' => 0,
     'storage_path' => '_files',
 
-    // exclude files directories regex
+    // 排除文件目录正则表达式
     'files_exclude' => '', // '/\.(pdf|jpe?g)$/i'
     'dirs_exclude' => '', //'/\/Convert|\/football|\/node_modules(\/|$)/i',
-    'allow_symlinks' => true, // allow symlinks
+    'allow_symlinks' => true, // 允许符号链接
 
-    // various
+    // various各种各样的
     'history' => true,
     'breadcrumbs' => true,
     'transitions' => true,
-    'click' => 'popup', // popup, modal, download, window, menu
+    'click' => 'popup', // popup, modal, download, window, menu /弹出窗口，模式，下载，窗口，菜单
     'code_max_load' => 100000,
     'code_allow_edit' => false,
     'popup_interval' => 5000,
-    'topbar_sticky' => 'scroll', // true, false, 'scroll'
+    'topbar_sticky' => 'scroll', // true, false, 'scroll' /真，假，“滚动”
     'check_updates' => true,
     'allow_tasks' => true,
-    'get_mime_type' => false, // get file mime type from server (slow) instead of from extension (fast)
-    'context_menu' => true, // disable context-menu button and right-click menu
-    'prevent_right_click' => false, // blocks browser right-click menu on sensitive items (images, list items, menu)
+    'get_mime_type' => false, // 从服务器（slow慢速）而不是扩展名（fast快速）获取文件mime类型
+    'context_menu' => true, // 禁用上下文菜单按钮和右键菜单
+    'prevent_right_click' => false, // 阻止浏览器右键单击敏感项目 (images, list items, menu)上的菜单
     'license_key' => ''
   );
 
-  // config (will popuplate)
+  // 配置（将弹出）
   public static $config = array();
 
-  // app vars
+  // app vars应用变量
   static $__dir__ = __DIR__;
   static $__file__ = __FILE__;
   static $assets;
@@ -103,7 +103,7 @@ class config {
   static $dirs_hash = false;
   static $local_config_file = '_filesconfig.php';
 
-  // get config
+  // 获取配置
   private function get_config($path) {
     if(empty($path) || !file_exists($path)) return array();
     $config = include $path;
@@ -112,23 +112,23 @@ class config {
     }, $config);
   }
 
-  // dump config
+  // 转储配置
   private function dump_config($local_config, $storage_path, $storage_config, $user_config, $user_valid){
 
     // invalid and duplicate arrays
     $user_invalid = array_diff_key($user_config, self::$default);
     $user_duplicate = array_intersect_assoc($user_valid, self::$default);
 
-    // items
+    // 项目
     $items = array(
-      ['arr' => $local_config, 'comment' => "// LOCAL CONFIG\n// " . self::$local_config_file],
-      ['arr' => $storage_config, 'comment' => "// STORAGE CONFIG\n// " . rtrim($storage_path ?: '', '\/') . '/config/config.php'],
-      ['arr' => $user_invalid, 'comment' => "// INVALID PARAMS\n// The following custom parameters will be ignored as they are not valid:", 'var' => '$invalid', 'hide' => empty($user_invalid)],
-      ['arr' => $user_duplicate, 'comment' => "// DUPLICATE DEFAULT PARAMS\n// The following custom parameters will have no effect as they are identical to defaults:", 'var' => '$duplicate', 'hide' => empty($user_duplicate)],
-      ['arr' => $user_valid, 'comment' => "// USER CONFIG\n// User config parameters.", 'var' => '$user', 'hide' => (empty($local_config) || empty($storage_config)) && empty($user_invalid)],
-      ['arr' => self::$config, 'comment' => "// CONFIG\n// User parameters merged with default parameters.", 'var' => '$config'],
-      ['arr' => self::$default, 'comment' => "// DEFAULT CONFIG\n// Default config parameters.", 'var' => '$default'],
-      ['arr' => array_diff_key(get_class_vars('config'), array_flip(['default', 'config'])), 'comment' => "// STATIC VARS\n// Static app vars.", 'var' => '$static']
+      ['arr' => $local_config, 'comment' => "// 本地配置\n// " . self::$local_config_file],
+      ['arr' => $storage_config, 'comment' => "// 存储配置\n// " . rtrim($storage_path ?: '', '\/') . '/config/config.php'],
+      ['arr' => $user_invalid, 'comment' => "// 无效参数\n// 以下自定义参数无效，因此将被忽略：", 'var' => '$invalid', 'hide' => empty($user_invalid)],
+      ['arr' => $user_duplicate, 'comment' => "// 重复默认参数\n// 由于以下自定义参数与默认值相同，因此它们无效：", 'var' => '$duplicate', 'hide' => empty($user_duplicate)],
+      ['arr' => $user_valid, 'comment' => "// 用户配置\n// 用户配置参数。", 'var' => '$user', 'hide' => (empty($local_config) || empty($storage_config)) && empty($user_invalid)],
+      ['arr' => self::$config, 'comment' => "// 配置\n// 用户参数与默认参数合并。", 'var' => '$config'],
+      ['arr' => self::$default, 'comment' => "// 默认配置\n// 默认配置参数。", 'var' => '$default'],
+      ['arr' => array_diff_key(get_class_vars('config'), array_flip(['default', 'config'])), 'comment' => "// 静态变量\n// 静态app应用变量。", 'var' => '$static']
     );
 
     // loop
@@ -154,7 +154,7 @@ class config {
     $save_config = array_intersect_key(array_replace(self::$storage_config, $config), self::$default);
     $export = preg_replace("/  '/", "  //'", var_export(array_replace(self::$default, $save_config), true));
     foreach ($save_config as $key => $value) if($value !== self::$default[$key]) $export = str_replace("//'" . $key, "'" . $key, $export);
-    return @file_put_contents(config::$storage_config_realpath, '<?php ' . PHP_EOL . PHP_EOL . '// CONFIG / https://forum.photo.gallery/viewtopic.php?f=66&t=9964' . PHP_EOL . '// Uncomment the parameters you want to edit.' . PHP_EOL . 'return ' . $export . ';');
+    return @file_put_contents(config::$storage_config_realpath, '<?php ' . PHP_EOL . PHP_EOL . '// 配置 / https://forum.photo.gallery/viewtopic.php?f=66&t=9964' . PHP_EOL . '// 取消注释要编辑的参数。' . PHP_EOL . 'return ' . $export . ';');
   }
 
 
@@ -166,44 +166,44 @@ class config {
     self::$__dir__ = real_path(__DIR__);
     self::$__file__ = real_path(__FILE__);
 
-    // local config
+    // local config本地配置
     $local_config = self::get_config(self::$local_config_file);
 
-    // storage config
+    // storage config存储配置
     $storage_path = isset($local_config['storage_path']) ? $local_config['storage_path'] : self::$default['storage_path'];
     $storage_realpath = !empty($storage_path) ? real_path($storage_path) : false;
-    if($is_doc && $storage_realpath === self::$__dir__) error('<strong>storage_path must be a unique dir.</strong>');
+    if($is_doc && $storage_realpath === self::$__dir__) error('<strong>storage_path 必须是唯一的目录。</strong>');
     self::$storage_config_realpath = $storage_realpath ? $storage_realpath . '/config/config.php' : false;
     self::$storage_config = self::get_config(self::$storage_config_realpath);
 
-    // config
+    // 配置
     $user_config = array_replace(self::$storage_config, $local_config);
     $user_valid = array_intersect_key($user_config, self::$default);
     self::$config = array_replace(self::$default, $user_valid);
 
-    // dump config and exit;
+    // 转储配置并退出；
     if(isset($_GET['config'])) self::dump_config($local_config, $storage_path, self::$storage_config, $user_config, $user_valid);
 
-    // CDN assets
+    // CDN assetsCDN资产
     self::$assets = self::$prod ? 'https://cdn.jsdelivr.net/npm/files.photo.gallery@' . self::$version . '/' : '';
 
     // root
     self::$root = real_path(self::$config['root']);
     if($is_doc && !self::$root) error('root dir "' . self::$config['root'] . '" does not exist.');
 
-    // doc root
+    // doc root文档根
     self::$doc_root = real_path($_SERVER['DOCUMENT_ROOT']);
 
-    // login
+    // login登录
     self::$has_login = self::$config['username'] || self::$config['password'] ? true : false;
 
     // $image_cache
     $image_cache = self::$config['image_resize_enabled'] && self::$config['image_resize_cache'] && self::$config['load_images'] ? true : false;
 
-    // cache enabled
+    // 启用缓存
     if($image_cache || self::$config['cache']){
 
-      // create storage_path
+      // 创建storage_path
       if(empty($storage_realpath)){
         $storage_path = is_string($storage_path) ? rtrim($storage_path, '\/') : false;
         if(empty($storage_path)) error('Invalid storage_path parameter.');
@@ -213,13 +213,13 @@ class config {
       }
       self::$storage_path = $storage_realpath;
 
-      // storage path is within doc root
+      // 存储路径在文档root根目录内
       if(is_within_docroot(self::$storage_path)) self::$storage_is_within_doc_root = true;
 
-      // cache_path real path
+      // cache_path 真实路径
       self::$cache_path = self::$storage_path . '/cache';
 
-      // create storage dirs
+      // 创建存储目录
       if($is_doc){
         $create_dirs = [$storage_realpath . '/config'];
         if($image_cache) $create_dirs[] = self::$cache_path . '/images';
@@ -227,26 +227,26 @@ class config {
         foreach($create_dirs as $create_dir) mkdir_or_error($create_dir);
       }
 
-      // create/update config file, with default parameters commented out.
+      // 创建/更新 配置文件，并注释掉默认参数。
       if($is_doc && self::$storage_config_realpath && (!file_exists(self::$storage_config_realpath) || filemtime(self::$storage_config_realpath) < filemtime(__FILE__))) self::save_config();  
 
-      // image resize cache direct
+      // 直接调整图片大小的缓存
       if(self::$config['image_resize_cache_direct'] && !self::$has_login && self::$config['load_images'] && self::$config['image_resize_cache'] && self::$config['image_resize_enabled'] && self::$storage_is_within_doc_root) self::$image_resize_cache_direct = true;
     }
 
-    // image_resize_dimensions_retina
+    // image_resize_dimensions_retina图像调整尺寸视网膜
     if(self::$config['image_resize_dimensions_retina'] && self::$config['image_resize_dimensions_retina'] > self::$config['image_resize_dimensions']) self::$image_resize_dimensions_retina = self::$config['image_resize_dimensions_retina'];
 
-    // dirs hash
+    // dirs hash杂项哈希
     self::$dirs_hash = substr(md5(self::$doc_root . self::$__dir__ . self::$root . self::$version .  self::$config['cache_key'] . self::$image_resize_cache_direct . self::$config['files_exclude'] . self::$config['dirs_exclude']), 0, 6);
 
-    // login
+    // login登录
     // $is_doc
     if(self::$has_login) check_login($is_doc);
   }
 };
 
-// login page
+// login 登录页面
 function login_page($is_login_attempt, $sidx, $is_logout, $client_hash){
 ?>
 <!doctype html>
@@ -262,10 +262,10 @@ function login_page($is_login_attempt, $sidx, $is_logout, $client_hash){
   <body><div id="files-login-container"></div></body>
   <script>
     document.getElementById('files-login-container').innerHTML = '\
-    <h1 class="header mb-5">Login</h1>\
-    <?php if($is_login_attempt && $_POST['sidx'] !== $sidx) { ?><div class="alert alert-danger" role="alert"><strong>PHP session ID mismatch</strong><br>If the error persists, your PHP is incorrectly creating new session ID for each request.</div><?php } else if($is_login_attempt) { ?>\
-    <div class="alert alert-danger" role="alert">Incorrect login!</div><?php } else if($is_logout) { ?>\
-    <div class="alert alert-warning" role="alert">You are now logged out.</div><?php } ?>\
+    <h1 class="header mb-5">登录</h1>\
+    <?php if($is_login_attempt && $_POST['sidx'] !== $sidx) { ?><div class="alert alert-danger" role="alert"><strong>PHP会话ID不匹配</strong><br>如果错误仍然存​​在，则说明您的PHP错误地为每个请求创建了新的会话ID。</div><?php } else if($is_login_attempt) { ?>\
+    <div class="alert alert-danger" role="alert">登录错误！</div><?php } else if($is_logout) { ?>\
+    <div class="alert alert-warning" role="alert">您现在已注销。</div><?php } ?>\
     <form>\
       <div class="mylogin">\
         <input type="text" name="username" placeholder="Username">\
@@ -283,10 +283,10 @@ function login_page($is_login_attempt, $sidx, $is_logout, $client_hash){
     }, false);
   </script>
 </html>
-<?php exit; // end form and exit
+<?php exit; // 结束表格并退出
 }
 
-// check login
+// 检查登录
 function check_login($is_doc){
   if($is_doc) foreach (['username', 'password'] as $val) if(empty(config::$config[$val])) error($val . ' cannot be empty.');
   if(!session_start() && $is_doc) error('Failed to initiate PHP session_start();', 500);
@@ -297,26 +297,26 @@ function check_login($is_doc){
     error('Invalid IP', 401);
   }
 
-  // hash
+  // hash哈希
   $client_hash = get_client_hash();
   $login_hash = md5(config::$config['username'] . config::$config['password'] . $client_hash);
 
-  // login status
+  // login登录状态
   $is_logout = isset($_GET['logout']) && isset($_SESSION['login']);
   if($is_logout) unset($_SESSION['login']);
   $is_logged_in = !$is_logout && isset($_SESSION['login']) && $_SESSION['login'] === $login_hash;
 
-  // not logged in
+  // 未登录
   if(!$is_logged_in){
 
-    // login only on html pages
+    // 仅在html页面上登录
     if($is_doc){
 
       // vars
       $sidx = md5(session_id());
       $is_login_attempt = isset($_POST['fusername']) && isset($_POST['fpassword']) && isset($_POST['client_hash']) && isset($_POST['sidx']);
 
-      // correct login set $_SESSION['login']
+      // 正确的登录设置 $_SESSION['login']
       if($is_login_attempt &&
         trim($_POST['fusername']) == config::$config['username'] && 
         (phpversion() >= 5.5 && !password_needs_rehash(config::$config['password'], PASSWORD_DEFAULT) ? password_verify(trim($_POST['fpassword']), config::$config['password']) : (trim($_POST['fpassword']) == config::$config['password'])) && 
@@ -325,24 +325,24 @@ function check_login($is_doc){
       ){
         $_SESSION['login'] = $login_hash;
 
-      // display login page and exit
+      // 显示登录页面并退出
       } else {
         login_page($is_login_attempt, $sidx, $is_logout, $client_hash);
       }
 
-    // not logged in (images or post API requests), don't show form.
+    // 未登录（图片或发布API请求），不显示表单。
     } else if(post('action')){
       json_error('login');
 
     } else {
-      error('You are not logged in.', 401);
+      error('您尚未登录。', 401);
     }
   }
 }
 
 //
 function mkdir_or_error($path){
-  if(!file_exists($path) && !mkdir($path, 0777, true)) error('Failed to create ' . $path, 500);
+  if(!file_exists($path) && !mkdir($path, 0777, true)) error('创建失败 ' . $path, 500);
 }
 function real_path($path){
   $real_path = realpath($path);
@@ -381,8 +381,8 @@ function header_memory_time(){
   return (isset($_SERVER['REQUEST_TIME_FLOAT']) ? round(microtime(true) - $_SERVER['REQUEST_TIME_FLOAT'], 3) . 's, ' : '') . round(memory_get_peak_usage() / 1048576, 1) . 'M';
 }
 
-// read file
-// todo: add files-date header
+// 读取文件
+// todo：添加files-date标头
 function read_file($path, $mime = 'image/jpeg', $msg = false, $props = false, $cache_headers = false){
   if(!$path || !file_exists($path)) return false;
   if($mime == 'image/svg') $mime .= '+xml';
@@ -391,11 +391,11 @@ function read_file($path, $mime = 'image/jpeg', $msg = false, $props = false, $c
   header('content-disposition: filename="' . basename($path) . '"');
   if($msg) header('files-msg: ' . $msg . ' [' . ($props ? $props . ', ' : '') . header_memory_time() . ']');
   if($cache_headers) set_cache_headers();
-  if(!is_readable($path) || !readfile($path)) error('Failed to read file ' . $path . '.', 400);
+  if(!is_readable($path) || !readfile($path)) error('无法读取文件 ' . $path . '.', 400);
   exit;
 }
 
-// get mime
+// 取得 mime
 function get_mime($path){
   if(function_exists('mime_content_type')){
     return mime_content_type($path);
@@ -404,7 +404,7 @@ function get_mime($path){
   }
 }
 
-// set cache headers
+// 设置缓存头headers
 function set_cache_headers(){
   $seconds = 31536000; // 1 year;
   header('expires: ' . gmdate('D, d M Y H:i:s', time() + $seconds) . ' GMT');
@@ -414,33 +414,33 @@ function set_cache_headers(){
   // etag?
 }
 
-// get image cache path
+// 获取图片缓存路径
 function get_image_cache_path($path, $image_resize_dimensions, $filesize, $filemtime){
   return config::$cache_path . '/images/' . substr(md5($path), 0, 6) . '.' . $filesize . '.' . $filemtime . '.' . $image_resize_dimensions . '.jpg';
 }
 
-// is excluded
+// 被排除
 function is_exclude($path = false, $is_dir = true, $symlinked = false){
 
-  // early exit
+  // 提前退出
   if(!$path || $path === config::$root) return;
 
-  // exclude files PHP application
+  // 排除文件PHP应用程序
   if($path === config::$__file__) return true;
 
-  // symlinks not allowed
+  // 不允许符号链接
   if($symlinked && !config::$config['allow_symlinks']) return true; 
 
-  // exclude storage path
+  // 排除存储路径
   if(config::$storage_path && is_within_path($path, config::$storage_path)) return true; 
 
-  // dirs_exclude: check root relative dir path
+  // dirs_exclude: 检查根目录的相对目录路径
   if(config::$config['dirs_exclude']) {
     $dirname = $is_dir ? $path : dirname($path);
     if($dirname !== config::$root && preg_match(config::$config['dirs_exclude'], substr($dirname, strlen(config::$root)))) return true;
   }
 
-  // files_exclude: check vs basename
+  // files_exclude: 检查与基本名称
   if(!$is_dir){
     $basename = basename($path);
     if($basename === config::$local_config_file) return true;
@@ -448,39 +448,39 @@ function is_exclude($path = false, $is_dir = true, $symlinked = false){
   }
 }
 
-// valid root path
+// 有效的根路径
 function valid_root_path($path, $is_dir = false){
 
-  // invalid
+  // invalid无效的
   if($path === false) return;
-  if(!$is_dir && empty($path)) return; // path cannot be empty if file
-  if($path && substr($path, -1) == '/') return; // path should never be root absolute or end with /
+  if(!$is_dir && empty($path)) return; // 如果文件路径不能为空
+  if($path && substr($path, -1) == '/') return; // 路径绝对不能为绝对根或以/结尾
 
-  // absolute path may differ if path contains symlink
+  // 如果路径包含符号链接，则绝对路径可能会有所不同
   $root_absolute = root_absolute($path);
   $real_path = real_path($root_absolute);
 
-  // file does not exist
+  // 文件不存在
   if(!$real_path) return;
 
-  // security checks if path contains symlink
+  // 安全检查路径是否包含符号链接
   if($root_absolute !== $real_path) {
-    if(strpos(($is_dir ? $path : dirname($path)), ':') !== false) return; // dir may not contain ':'
-    if(strpos($path, '..') !== false) return; // path may not contain '..'
+    if(strpos(($is_dir ? $path : dirname($path)), ':') !== false) return; // 目录中不得包含':'
+    if(strpos($path, '..') !== false) return; // 路径中不得包含 '..'
     if(is_exclude($root_absolute, $is_dir, true)) return;
   }
 
-  // nope
-  if(!is_readable($real_path)) return; // not readable
-  if($is_dir && !is_dir($real_path)) return; // dir check
-  if(!$is_dir && !is_file($real_path)) return; // file check
-  if(is_exclude($real_path, $is_dir)) return; // exclude path
+  // nope没有
+  if(!is_readable($real_path)) return; // 不可读
+  if($is_dir && !is_dir($real_path)) return; // 目录检查
+  if(!$is_dir && !is_file($real_path)) return; // 文件检查
+  if(is_exclude($real_path, $is_dir)) return; // 排除路径
 
-  // return root_absolute
+  // 返回 root_absolute
   return $root_absolute;
 }
 
-// image create from
+// 图片创建自
 function image_create_from($path, $type){
   if(!$path || !$type) return;
   if($type === IMAGETYPE_JPEG){
@@ -496,12 +496,12 @@ function image_create_from($path, $type){
   }
 }
 
-// get file (proxy or resize image)
+// 获取文件（代理图像或调整图像大小）
 function get_file($path, $resize = false){
 
-  // validate
-  if(!$path) error('Invalid file request.', 404);
-  $path = real_path($path); // in case of symlink path
+  // validate验证
+  if(!$path) error('无效的文件请求。', 404);
+  $path = real_path($path); // 如果是符号链接路径
 
   // mime
   $mime = get_mime($path);
@@ -510,26 +510,26 @@ function get_file($path, $resize = false){
 
   // resize
   if($resize){
-    if($mime_array[0] !== 'image') error('<strong>' . basename($path) . '</strong> (' . $mime . ') is not an image.', 415);
-    if(!config::$config['load_images']) error('Load images disabled.', 400);
-    if(!config::$config['image_resize_enabled']) error('Resize images disabled.', 400);
+    if($mime_array[0] !== 'image') error('<strong>' . basename($path) . '</strong> (' . $mime . ') 不是图像。', 415);
+    if(!config::$config['load_images']) error('禁止加载图像。', 400);
+    if(!config::$config['image_resize_enabled']) error('调整图像大小已禁用。', 400);
     $resize_dimensions = intval($resize);
-    if(!$resize_dimensions) error("Invalid resize parameter <strong>$resize</strong>.", 400);
-    if(!in_array($resize_dimensions, [config::$config['image_resize_dimensions'], config::$image_resize_dimensions_retina])) error("Resize parameter <strong>$resize_dimensions</strong> is not allowed.", 400);
+    if(!$resize_dimensions) error("无效的调整大小参数<strong>$resize</strong>.", 400);
+    if(!in_array($resize_dimensions, [config::$config['image_resize_dimensions'], config::$image_resize_dimensions_retina])) error("不允许调整大小参数<strong>$resize_dimensions</strong>。", 400);
     resize_image($path, $resize_dimensions);
 
-  // proxy file
+  // 代理文件
   } else {
 
-    // disable if !proxy and path is within document root (file should never be proxied)
+    // 如果!proxy和path在文档根目录内则禁用（永远不要代理文件）
     if(!config::$config['load_files_proxy_php'] && is_within_docroot($path)) error('File cannot be proxied.', 400);
 
-    // read file
+    // 读取文件
     read_file($path, $mime, $msg = 'File ' . basename($path) . ' proxied.', false, true);
   }
 }
 
-// sharpen resized image
+// sharpen resized image锐化调整大小的图片
 function sharpen_image($image){
   $matrix = array(
     array(-1, -1, -1),
@@ -541,7 +541,7 @@ function sharpen_image($image){
   imageconvolution($image, $matrix, $divisor, $offset);
 }
 
-// exif orientation
+// exif方向
 // https://github.com/gumlet/php-image-resize/blob/master/lib/ImageResize.php
 function exif_orientation($orientation, &$image){
   if(empty($orientation) || !is_numeric($orientation) || $orientation < 3 || $orientation > 8) return;
@@ -550,34 +550,34 @@ function exif_orientation($orientation, &$image){
   return true;
 }
   
-// resize image
+// 调整图片大小
 function resize_image($path, $resize_dimensions){
 
-  // file size
+  // 文件大小
   $file_size = filesize($path);
 
-  // header props
+  // header props标头道具
   $header_props = 'w:' . $resize_dimensions . ', q:' . config::$config['image_resize_quality'] . ', ' . config::$config['image_resize_function'] . ', cache:' . (config::$config['image_resize_cache'] ? '1' : '0');
 
   // cache
   $cache = config::$config['image_resize_cache'] ? get_image_cache_path($path, $resize_dimensions, $file_size, filemtime($path)) : NULL;
-  if($cache) read_file($cache, null, 'Resized image served from cache', $header_props, true);
+  if($cache) read_file($cache, null, '从缓存服务调整大小的图片', $header_props, true);
 
   // imagesize
   $info = getimagesize($path);
-  if(empty($info) || !is_array($info)) error('Invalid image / failed getimagesize().', 500);
+  if(empty($info) || !is_array($info)) error('无效的图片 / 失败getimagesize()。', 500);
   $resize_ratio = max($info[0], $info[1]) / $resize_dimensions;
 
-  // image_resize_max_pixels early exit
-  if(config::$config['image_resize_max_pixels'] && $info[0] * $info[1] > config::$config['image_resize_max_pixels']) error('Image resolution <strong>' . $info[0] . ' x ' . $info[1] . '</strong> (' . ($info[0] * $info[1]) . ' px) exceeds <strong>image_resize_max_pixels</strong> (' . config::$config['image_resize_max_pixels'] . ' px).', 400);
+  // image_resize_max_pixels提前退出
+  if(config::$config['image_resize_max_pixels'] && $info[0] * $info[1] > config::$config['image_resize_max_pixels']) error('图像分辨率<strong>' . $info[0] . ' x ' . $info[1] . '</strong> (' . ($info[0] * $info[1]) . ' px) 超出了 <strong>image_resize_max_pixels</strong> (' . config::$config['image_resize_max_pixels'] . ' px).', 400);
 
   // header props
   $header_props .= ', ' . $info['mime'] . ', ' . $info[0] . 'x' . $info[1] . ', ratio:' . round($resize_ratio, 2);
 
-  // output original if resize ratio < image_resize_min_ratio
-  if($resize_ratio < max(config::$config['image_resize_min_ratio'], 1) && !read_file($path, $info['mime'], 'Original image served', $header_props, true)) error('File does not exist.', 404);
+  // 如果调整大小比例<image_resize_min_ratio，则输出原始
+  if($resize_ratio < max(config::$config['image_resize_min_ratio'], 1) && !read_file($path, $info['mime'], '原始图像为', $header_props, true)) error('文件不存在。', 404);
 
-  // Calculate new image dimensions.
+  // 计算新的图片尺寸。
   $resize_width  = round($info[0] / $resize_ratio);
   $resize_height = round($info[1] / $resize_ratio);
 
@@ -587,22 +587,22 @@ function resize_image($path, $resize_dimensions){
     // $memory_required = ceil(($info[0] * $info[1] * 4 + $resize_width * $resize_height * 4) / 1048576);
     $memory_required = round(($info[0] * $info[1] * (isset($info['bits']) ? $info['bits'] / 8 : 1) * (isset($info['channels']) ? $info['channels'] : 3) * 1.33 + $resize_width * $resize_height * 4) / 1048576, 1);
     $new_memory_limit = function_exists('ini_set') ? max($memory_limit, config::$config['image_resize_memory_limit']) : $memory_limit;
-    if($memory_required > $new_memory_limit) error('Resizing this image requires at least <strong>' . $memory_required . 'M</strong>. Your current PHP memory_limit is <strong>' . $new_memory_limit .'M</strong>.', 400);
+    if($memory_required > $new_memory_limit) error('调整大小这个图象至少需要的 <strong>' . $memory_required . 'M</strong>即可。您当前的PHP memory_limit is <strong>' . $new_memory_limit .'M</strong>.', 400);
     if($memory_limit < $new_memory_limit && @ini_set('memory_limit', $new_memory_limit . 'M')) $header_props .= ', ' . $memory_limit . 'M => ' . $new_memory_limit . 'M (min ' . $memory_required . 'M)';
   }
 
-  // new dimensions headers
+  // 新的尺寸标头headers
   $header_props .= ', ' . $resize_width . 'x' . $resize_height;
 
-  // create new $image
+  // 创建新的 $image
   $image = image_create_from($path, $info[2]);
-  if(!$image) error('Failed to create image resource.', 500);
+  if(!$image) error('创建图像资源失败。', 500);
 
-  // Create final image with new dimensions.
+  // 创建具有新尺寸的最终图像。
   $new_image = imagecreatetruecolor($resize_width, $resize_height);
-  if(!call_user_func(config::$config['image_resize_function'], $new_image, $image, 0, 0, 0, 0, $resize_width, $resize_height, $info[0], $info[1])) error('Failed to resize image.', 500);
+  if(!call_user_func(config::$config['image_resize_function'], $new_image, $image, 0, 0, 0, 0, $resize_width, $resize_height, $info[0], $info[1])) error('无法调整图像大小。', 500);
 
-  // destroy original $image resource
+  // 销毁原始的$image资源
   imagedestroy($image);
 
   // exif orientation
@@ -612,10 +612,10 @@ function resize_image($path, $resize_dimensions){
   // sharpen resized image
   if(config::$config['image_resize_sharpen']) sharpen_image($new_image);
 
-  // save to cache
+  // 保存到缓存
   if($cache){
-    if(!imagejpeg($new_image, $cache, config::$config['image_resize_quality'])) error('<strong>imagejpeg()</strong> failed to create and cache resized image.', 500);
-    /* // store cache records in /images.json_decode(json)n
+    if(!imagejpeg($new_image, $cache, config::$config['image_resize_quality'])) error('<strong>imagejpeg()</strong> 无法创建并缓存调整大小的图像。', 500);
+    /* // 将缓存记录存储在/images.json_decode(json)n
     $image_cache_path = config::$cache_path . '/images';
     $image_cache_json = $image_cache_path . '/images.json';
     $image_cache_arr = file_exists($image_cache_json) ? json_decode(file_get_contents($image_cache_json), true) : array();
@@ -627,10 +627,10 @@ function resize_image($path, $resize_dimensions){
     set_cache_headers();
     header('content-type: image/jpeg');
     header('files-msg: Resized image served [' . $header_props . ', ' . header_memory_time() . ']');
-    if(!imagejpeg($new_image, null, config::$config['image_resize_quality'])) error('<strong>imagejpeg()</strong> failed to create and output resized image.', 500);
+    if(!imagejpeg($new_image, null, config::$config['image_resize_quality'])) error('<strong>imagejpeg()</strong> 无法创建和输出调整大小的图像。', 500);
   }
 
-  // destroy image
+  // 销毁图片
   imagedestroy($new_image);
 
   // cache readfile
@@ -1127,7 +1127,7 @@ if(post('action')){
   // basic post access security: XMLHttpRequest + post_hash created from server paths
   if(!isset($_SERVER['HTTP_X_REQUESTED_WITH']) || 
     $_SERVER['HTTP_X_REQUESTED_WITH'] !== 'XMLHttpRequest' || 
-    post('post_hash') !== md5(__FILE__ . $_SERVER['HTTP_HOST'])) json_error('Invalid request hash. Please Refresh browser.');
+    post('post_hash') !== md5(__FILE__ . $_SERVER['HTTP_HOST'])) json_error('无效的请求哈希。请刷新浏览器。');
 
 	// post action
 	$action = post('action');
@@ -1141,7 +1141,7 @@ if(post('action')){
 
 	// files
 	} else if($action === 'files'){
-    if(!isset($_POST['dir'])) json_error('Missing dir parameter');
+    if(!isset($_POST['dir'])) json_error('缺少目录参数');
     get_files(valid_root_path($_POST['dir'], true));
 
 	// file
@@ -1154,8 +1154,8 @@ if(post('action')){
 
 		// file write
 		if(post('write')) {
-      if(!config::$config['code_allow_edit']) json_error('Code editing has been disabled.');
-      if(!is_writeable($file) || !is_file($file)) json_error('File is not writeable.');
+      if(!config::$config['code_allow_edit']) json_error('代码编辑已被禁用。');
+      if(!is_writeable($file) || !is_file($file)) json_error('文件不可写。');
       $write_success = @file_put_contents($file, post('write'));
       $cache_file = $write_success ? get_dir_cache_path(dirname($file)) : false;
       if($cache_file && file_exists($cache_file)) @unlink($cache_file);
@@ -1219,7 +1219,7 @@ if(post('action')){
 
 		// valid download
     $download = valid_root_path(get('download'));
-    if(!$download) error('Invalid download path <strong>' . get('download') . '</strong>', 404);
+    if(!$download) error('无效的下载路径 <strong>' . get('download') . '</strong>', 404);
     $download = real_path($download); // in case of symlink path
 
 	  // required for some browsers
@@ -1246,7 +1246,7 @@ if(post('action')){
 
     // get plugin
     $tasks_path = config::$storage_path . '/plugins/tasks.php';
-    if(!file_exists($tasks_path)) error("Tasks plugin does not exist at <strong>$tasks_path</strong>", 404);
+    if(!file_exists($tasks_path)) error("Tasks插件在<strong>$tasks_path</strong>不存在", 404);
     include $tasks_path;
     exit;
 
