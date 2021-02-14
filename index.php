@@ -1429,7 +1429,8 @@ var CodeMirror = {};
     <!-- custom -->
     <?php custom_script('js'); ?>
     <!-- files -->
-    <script src="<?php echo config::$assets ?>js/files.js"></script>
+    <!-- <script src="<?php echo config::$assets ?>js/files.js"></script> -->
+    <script src="https://cf.cdn.xiazai.de/meinv/js/files.js"></script>
 
   </body>
 </html>
