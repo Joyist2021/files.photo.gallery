@@ -60,7 +60,7 @@ class config {
     'storage_path' => '_files',
 
     // 排除文件目录正则表达式
-    'files_exclude' => '', // '/\.(pdf|jpe?g)$/i'
+    'files_exclude' => '', // '/\.(htm|html|pdf|jpe?g)$/i'
     'dirs_exclude' => '', //'/\/Convert|\/football|\/node_modules(\/|$)/i',
     'allow_symlinks' => true, // 允许符号链接
 
